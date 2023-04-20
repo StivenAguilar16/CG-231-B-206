@@ -1,42 +1,4 @@
-//NESTOR STIVEN AGUILAR GARZON - 6000423
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Transformaciones 3D</title>
-  <script src="funciones.js"></script>
-  <script src="programa.js"></script>
-</head>
-<body>
-  <canvas id="canvas" width="800" height="600"></canvas>
-</body>
-</html>
-
-
-
-// Función para obtener la matriz de traslación en 3D
-function matrizTraslacion3D(tx, ty, tz) {
-  return [
-    [1, 0, 0, tx],
-    [0, 1, 0, ty],
-    [0, 0, 1, tz],
-    [0, 0, 0, 1]
-  ];
-}
-
-// Función para obtener la matriz de escala en 3D
-function matrizEscala3D(sx, sy, sz) {
-  return [
-    [sx, 0, 0, 0],
-    [0, sy, 0, 0],
-    [0, 0, sz, 0],
-    [0, 0, 0, 1]
-  ];
-}
-
-
-
-// Obtener el contexto del canvas
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
@@ -71,5 +33,13 @@ ctx.strokeStyle = '#000000';
 ctx.lineWidth = 1;
 ctx.beginPath();
 for (var i = 0; i < puntosTransformados.length; i++) {
-  var x = puntosTransformados[i][0] +
-  
+  var x = puntosTransformados[i][0] + canvas.width / 2;
+  var y = puntosTransformados[i][1] + canvas.height / 2;
+  if (i === 0) {
+    ctx.moveTo(x, y);
+  } else {
+    ctx.lineTo(x, y);
+  }
+}
+ctx.closePath();
+ctx.stroke();
