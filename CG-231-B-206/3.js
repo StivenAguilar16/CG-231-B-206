@@ -1,4 +1,4 @@
-Archivo: programa.js 
+
 
 // Obtener el contexto del canvas
 var canvas = document.getElementById('canvas');
